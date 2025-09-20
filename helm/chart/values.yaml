@@ -1,0 +1,18 @@
+replicaCount: 2
+image:
+  repository: my-dockerhub-user/ci-cd-demo
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8000
+
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - host: demo.local
+      paths:
+        - path: /
+          pathType: Prefix
